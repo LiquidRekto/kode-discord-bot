@@ -12,13 +12,13 @@ async def on_message(message):
          await message.channel.send(f"WASSUP {message.author.mention}")
       if message.content.startswith("$ask"):
          ctx = message.content.split()
-         ask_channel = client.get_channel("733594602287792149")
+         ask_channel = client.get_channel(733594602287792149)
          question = ""
          for question_chunk in ctx[1:]:
             question += question_chunk
             if (ctx[1:].index(question_chunk) < len(ctx[1:]) - 1):
                question += " "
-         await message.send_message(ask_channel, f"Người dùng tên **{message.author}** đã hỏi: *{question}*")
+         await ask_channel.send(ask_channel, f"Người dùng tên **{message.author}** đã hỏi: *{question}*")
 
 
 
