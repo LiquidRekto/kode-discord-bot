@@ -18,7 +18,8 @@ async def on_message(message):
             question += question_chunk
             if (ctx[1:].index(question_chunk) < len(ctx[1:]) - 1):
                question += " "
-         await ask_channel.send(f"Người dùng tên **{message.author}** đã hỏi: *{question}*")
+         moderator = discord.utils.get(ctx.guild.roles, id=733580724912783420)
+         await ask_channel.send(f"{moderator.mention}\nNgười dùng tên **{message.author}** đã hỏi: \n*{question}*")
 
 
 
