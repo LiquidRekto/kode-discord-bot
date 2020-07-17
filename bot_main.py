@@ -25,7 +25,7 @@ async def on_message(message):
          if ctx[1].isnumeric():
             msg_num = int(ctx[1])
             msg = []
-               lists = await message.channel.history(limit=msg_num+1).flatten()
+            lists = await message.channel.history(limit=msg_num+1).flatten()
             for x in lists:
                msg.append(x)
             await message.channel.delete_messages(msg)
