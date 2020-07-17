@@ -22,16 +22,19 @@ async def on_message(message):
          await ask_channel.send(f"{moderator.mention}\nNgười dùng tên **{message.author}** đã hỏi: \n*{question}*")
       if message.content.startswith("$rmvmsg"):
          ctx = message.content.split()
-         if ctx[1].isnumeric():
-            msg_num = int(ctx[1])
-            msg = []
-            lists = await message.channel.history(limit=msg_num+1).flatten()
-            for x in lists:
-               msg.append(x)
-            await message.channel.delete_messages(msg)
-            await message.channel.send(f"{message.author.mention} Bạn đã xoá %s tin nhắn!" % ctx[1])
+         if len(ctx) < 2:
+            await message.channel.send(f"{message.author.mention}\nKhông thể thực hiện lệnh!\nLí do: *Người sử dụng chưa nhập số tin nhắn cần xoá!*")
          else:
-            await message.channel.send(f"{message.author.mention}\nKhông thể thực hiện lệnh!\nLí do: *Lỗi nhập liệu*")
+            if ctx[1].isnumeric():
+               msg_num = int(ctx[1])
+               msg = []
+               lists = await message.channel.history(limit=msg_num+1).flatten()
+               for x in lists:
+                  msg.append(x)
+               await message.channel.delete_messages(msg)
+               await message.channel.send(f"{message.author.mention} Bạn đã xoá %s tin nhắn!" % ctx[1])
+            else:
+               await message.channel.send(f"{message.author.mention}\nKhông thể thực hiện lệnh!\nLí do: *Lỗi nhập liệu*")
 
 
 
