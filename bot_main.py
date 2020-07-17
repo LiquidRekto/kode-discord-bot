@@ -15,9 +15,9 @@ async def on_message(message):
          ask_channel = client.get_channel("733594602287792149")
          question = ""
          for question_chunk in ctx[1:]:
-             question += question_chunk
-                if (ctx[1:].index(question_chunk) < len(ctx[1:]) - 1):
-                    question += " "
+            question += question_chunk
+               if (ctx[1:].index(question_chunk) < len(ctx[1:]) - 1):
+                  question += " "
          await client.send_message(ask_channel, f"Người dùng tên **{message.author}** đã hỏi: *{question}*")
 
 
