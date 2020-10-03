@@ -3,6 +3,15 @@ import discord
 
 client = discord.Client()
 
+def adminCheck(msg):
+   identified = False
+   for role in msg.author.roles:
+      if (role.id == 733580724912783420):
+         identified = True
+         return True
+   if identified == False:
+      return False
+
 @client.event
 async def on_message(message):
    if message.author.bot:
